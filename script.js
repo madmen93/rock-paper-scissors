@@ -6,6 +6,7 @@ const sicssors = "tijeras";
 
 //Obtener la jugada del usuario
 let move = prompt("Ingrese roca, papel o tijeras:");
+let playerSelection = move.toLowerCase();
 
 //Obtener la jugada de la computadora
 function getRandomNumber(){
