@@ -9,7 +9,7 @@ let playerSelection = prompt("Ingrese roca, papel o tijeras:");
 
 //Obtener la jugada de la computadora
 function getRandomNumber(){
-let number = Math.floor(Math.random()*(3 - 1)+1);
+let number = Math.floor(Math.random()*(4 - 1)+1);
 return number;
 }
 
