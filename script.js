@@ -1,7 +1,13 @@
 
 //Obtener la jugada del usuario
-let move = prompt("Ingrese piedra, papel o tijeras:");
-let playerSelection = move.toLowerCase();
+let acu = 0;
+for(let i = 0; i < 5; i++) {
+function getPlayerSelection() {
+    let move = prompt("Ingrese piedra, papel o tijeras:");
+    return move;
+}
+let playerMove= getPlayerSelection();
+let playerSelection = playerMove.toLowerCase();
 
 //Obtener la jugada de la computadora
 function getRandomNumber(){
@@ -80,11 +86,11 @@ console.log(playRound(playerSelection,computerSelection));
 
 //Resultado del juego e impresión del resultado del juego
 
-let acu = 0;
+// let acu = 0;
 let roundResult = playRound(playerSelection, computerSelection);
 
-for(let i = 0; i < 5; i++) {
-    let roundResult = playRound(playerSelection, computerSelection);
+// for(let i = 0; i < 5; i++) {
+    
     function playGame(roundResult) {
         let cont = 0;
             if(roundResult == "¡Ganaste! La piedra vence a las tijeras." || roundResult == "¡Ganaste! El papel vence a la piedra." || roundResult == "¡Ganaste! Las tijeras vencen al papel."){
@@ -94,6 +100,7 @@ for(let i = 0; i < 5; i++) {
             }
         return cont;
     }
+    // let finalResult = playGame(roundResult);
     gameResult = playGame(roundResult); 
     acu += gameResult;
 }
@@ -110,6 +117,6 @@ function printResult(acu) {
     return print;
 }
 
-let finalResult = playGame(roundResult);
+// let finalResult = playGame(roundResult);
 
-console.log(printResult(finalResult));
+console.log(printResult(acu));
