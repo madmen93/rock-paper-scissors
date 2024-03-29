@@ -33,7 +33,6 @@ function getComputerChoice(selection){
     }
     return sel;
 }
-console.log(getComputerChoice(selection));
 
 //Resultado de la ronda e impresión del resultado de la ronda
 function playRound(playerSelection, computerSelection) {
@@ -82,11 +81,10 @@ function playRound(playerSelection, computerSelection) {
 }
 let computerSelection = getComputerChoice(selection);
 
-
-console.log(playRound(playerSelection,computerSelection));
-
 //Resultado del juego e impresión del resultado del juego
 let roundResult = playRound(playerSelection, computerSelection);
+
+alert(`La computadora jugó ${computerSelection}. El resultado de la ronda fue: ${roundResult}`);
    
     function playGame(roundResult) {
         let cont = 0;
@@ -106,7 +104,7 @@ function printResult(acu) {
     if(acu > 0){
         print = "¡Ganaste el juego! ¡Felicidades!";
     }else if(acu < 0){
-        print = "¡Perdiste el juego!¡Inténtalo de nuevo!";
+        print = "¡Perdiste el juego! ¡Inténtalo de nuevo!";
     }else{
         print = "¡Empate! A veces ocurre..."
     }
