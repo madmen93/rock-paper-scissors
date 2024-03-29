@@ -1,9 +1,4 @@
 
-//Determinar valores iniciales
-const paper = "papel";
-const rock = "roca";
-const sicssors = "tijeras";
-
 //Obtener la jugada del usuario
 let move = prompt("Ingrese piedra, papel o tijeras:");
 let playerSelection = move.toLowerCase();
