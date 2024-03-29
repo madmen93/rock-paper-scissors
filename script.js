@@ -75,6 +75,41 @@ function playRound(playerSelection, computerSelection) {
 }
 let computerSelection = getComputerChoice(selection);
 
+
 console.log(playRound(playerSelection,computerSelection));
 
 //Resultado del juego e impresión del resultado del juego
+
+let acu = 0;
+let roundResult = playRound(playerSelection, computerSelection);
+
+for(let i = 0; i < 5; i++) {
+    let roundResult = playRound(playerSelection, computerSelection);
+    function playGame(roundResult) {
+        let cont = 0;
+            if(roundResult == "¡Ganaste! La piedra vence a las tijeras." || roundResult == "¡Ganaste! El papel vence a la piedra." || roundResult == "¡Ganaste! Las tijeras vencen al papel."){
+                cont++;
+            }else if(roundResult == "¡Perdiste! El papel vence a la piedra." || roundResult == "¡Perdiste! Las tijeras vencen al papel." || roundResult == "¡Perdiste! La piedra vence a las tijeras."){
+                cont--;
+            }
+        return cont;
+    }
+    gameResult = playGame(roundResult); 
+    acu += gameResult;
+}
+
+function printResult(acu) {
+    let print;
+    if(acu > 0){
+        print = "¡Ganaste el juego! ¡Felicidades!";
+    }else if(acu < 0){
+        print = "¡Perdiste el juego!¡Inténtalo de nuevo!";
+    }else{
+        print = "¡Empate! A veces ocurre..."
+    }
+    return print;
+}
+
+let finalResult = playGame(roundResult);
+
+console.log(printResult(finalResult));
