@@ -1,6 +1,8 @@
 
 
 let acu = 0;
+let acuHuman = 0;
+let acuComputer = 0;
 for(let i = 0; i < 5; i++) {
 //Obtener la jugada del usuario
 function getPlayerSelection() {
@@ -96,6 +98,13 @@ alert(`La computadora jugó ${computerSelection}. El resultado de la ronda fue: 
         return cont;
     }
     gameResult = playGame(roundResult); 
+
+    if(gameResult == 1){
+        acuHuman++;
+    }else if(gameResult == -1){
+        acuComputer++;
+    }
+
     acu += gameResult;
 }
 
@@ -111,4 +120,6 @@ function printResult(acu) {
     return print;
 }
 
-alert(printResult(acu));
+finalResult = printResult(acu);
+
+alert(`La puntuación final fue:\nJugador: ${acuHuman} Computadora: ${acuComputer}\n${finalResult}`);
