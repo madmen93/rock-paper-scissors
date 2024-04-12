@@ -3,7 +3,7 @@
 let acu = 0;
 let acuHuman = 0;
 let acuComputer = 0;
-for(let i = 0; i < 5; i++) {
+
 //Obtener la jugada del usuario
 function getPlayerSelection() {
     let move = prompt("Ingrese piedra, papel o tijeras:");
@@ -106,7 +106,6 @@ alert(`La computadora jugó ${computerSelection}. El resultado de la ronda fue: 
     }
 
     acu += gameResult;
-}
 
 function printResult(acu) {
     let print;
