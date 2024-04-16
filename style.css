@@ -1,0 +1,67 @@
+:root{
+    --beige: rgb(241, 234, 224);
+    --orange: rgb(237, 99, 53);
+    --red: rgb(233, 49, 25);
+    --light-orange: rgb(236, 174, 125);
+    --aqua-light: rgb(141, 181, 173);
+    --cyan: rgb(2, 109, 129);
+    --blue: rgb(6, 75, 114);
+}
+
+* {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: var(--beige);
+    
+    
+}
+
+body {
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    margin: auto;
+}
+
+#header {
+    text-align: center;
+    
+    background-color: var(--blue);
+}
+
+h1 {
+    color: var(--red);
+    font-size: 60px;
+    background-color: var(--blue);
+
+}
+
+#content{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 900px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.text {
+    font-size: 20px;
+}
+
+#score {
+    display: flex;
+    /*text-align: center;*/
+    justify-content: center;
+    gap: 35px;
+    max-width: 900px;
+}
+
+button {
+    align-items: center;
+    border-radius: 10px;
+}
