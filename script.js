@@ -1,11 +1,13 @@
 const userPoints = document.querySelector('#txtUser');
 const computerPoints = document.querySelector('#txtComputer');
+const userImg = document.querySelector('#user');
+const computerImg = document.querySelector('#computer');
 const otherText = document.querySelector('#txtOne');
 const text = document.querySelector('#txtTwo');
 const wrapper = document.querySelector('.wrapper');
-const btnPaper = document.querySelector('#paper');
-const btnRock = document.querySelector('#rock');
-const btnScissors = document.querySelector('#scissors');
+const btnPaper = document.querySelector('#btnpaper');
+const btnRock = document.querySelector('#btnrock');
+const btnScissors = document.querySelector('#btnscissors');
 
 //Final message:
 const newMessage = document.createElement('section');
@@ -24,14 +26,17 @@ newMessage.appendChild(refreshBtn);
 function playerSelection() {
     let sel = this.id;
     switch (sel) {
-        case "paper":
-            document.querySelector('.user').src = "./images/paper.png";
+        case "btnpaper":
+            document.querySelector('#user').src = "./images/paper.png";
+            userImg.setAttribute("class", "paper");
             break;
-        case "rock":
-            document.querySelector('.user').src = "./images/rock.png";
+        case "btnrock":
+            document.querySelector('#user').src = "./images/rock.png";
+            userImg.setAttribute("class", "rock");
             break;
-        case "scissors":
-            document.querySelector('.user').src = "./images/scissors.png";
+        case "btnscissors":
+            document.querySelector('#user').src = "./images/scissors.png";
+            userImg.setAttribute("class", "scissors");
             break;
     } 
     computerSelection();
@@ -43,13 +48,16 @@ function computerSelection(){
     let number = Math.floor(Math.random()*(4 - 1)+1);
     switch (number) {
     case 1:
-        document.querySelector('.computer').src = "./images/paper.png";
+        document.querySelector('#computer').src = "./images/paper.png";
+        computerImg.setAttribute("class","paper");
         break;
     case 2:
-        document.querySelector('.computer').src = "./images/rock.png";
+        document.querySelector('#computer').src = "./images/rock.png";
+        computerImg.setAttribute("class","rock");
         break;
     case 3:
-        document.querySelector('.computer').src = "./images/scissors.png";
+        document.querySelector('#computer').src = "./images/scissors.png";
+        computerImg.setAttribute("class","scissors");
         break;
     }
 }
@@ -61,22 +69,22 @@ let acuComputer = 0;
 function playRound() {
     let messageOne;
     let messageTwo;
-    let user = document.querySelector('.user').src;
-    let computer = document.querySelector('.computer').src;
+    let user = document.querySelector('#user').className;
+    let computer = document.querySelector('#computer').className;
     switch (user) {
-        case "http://127.0.0.1:5500/images/paper.png":
+        case "paper":
         switch (computer) {
-            case "http://127.0.0.1:5500/images/paper.png":
+            case "paper":
             messageOne = "Whoa!";
             messageTwo = "Tie!";                            
             break;
-            case "http://127.0.0.1:5500/images/rock.png":
+            case "rock":
             messageOne = "You win!";
             messageTwo = "Paper beats Rock!";
             acuUser++;
             userPoints.textContent =  `Player: ${acuUser}`;
             break;
-            case "http://127.0.0.1:5500/images/scissors.png":
+            case "scissors":
             messageOne = "You lose!";
             messageTwo = "Scissors beats Paper";
             acuComputer++;
@@ -84,19 +92,19 @@ function playRound() {
             break;
             }
         break;
-        case "http://127.0.0.1:5500/images/rock.png":
+        case "rock":
         switch (computer) {
-            case "http://127.0.0.1:5500/images/paper.png":
+            case "paper":
             messageOne = "You lose!";
             messageTwo = "Paper beats Rock";
             acuComputer++;
             computerPoints.textContent =  `Computer: ${acuComputer}`;
             break;
-            case "http://127.0.0.1:5500/images/rock.png":
+            case "rock":
             messageOne = "Whoa!";
             messageTwo = "Tie!";
             break;
-            case "http://127.0.0.1:5500/images/scissors.png":
+            case "scissors":
             messageOne = "You win!";
             messageTwo = "Rock beats Scissors!";
             acuUser++;
@@ -104,21 +112,21 @@ function playRound() {
             break;
             }
         break;
-        case "http://127.0.0.1:5500/images/scissors.png":
+        case "scissors":
             switch (computer) {
-            case "http://127.0.0.1:5500/images/paper.png":
+            case "paper":
             messageOne = "You win!";
             messageTwo = "Scissors beats Paper!";
             acuUser++;
             userPoints.textContent =  `Player: ${acuUser}`;
             break;
-            case "http://127.0.0.1:5500/images/rock.png":
+            case "rock":
             messageOne = "You lose!";
             messageTwo = "Rock beats Scissors";
             acuComputer++;
             computerPoints.textContent =  `Computer: ${acuComputer}`;
             break;
-            case "http://127.0.0.1:5500/images/scissors.png":
+            case "scissors":
             messageOne = "Whoa!";
             messageTwo = "Tie";
             break;
@@ -146,7 +154,6 @@ function declareWinner(){
 function removeWrapper() {
     wrapper.remove();
 }
-
 function refreshPage() {
     location.reload();
 }
