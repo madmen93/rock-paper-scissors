@@ -24,7 +24,7 @@ body {
 
 #header {
     text-align: center;
-    
+    margin-bottom: 20px;
     background-color: var(--blue);
 }
 
@@ -64,4 +64,40 @@ h1 {
 button {
     align-items: center;
     border-radius: 10px;
+}
+
+img {
+    width: 120px;
+}
+
+.hide {
+    transform: scale(0);
+}
+
+.message {
+    display: flex;
+    background-color: var(--orange);
+    border-radius: 20px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    margin-top: 100px;
+    width: 500px;
+}
+
+.txtMessage {
+    background-color: var(--orange);
+    color: var(--blue);
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.newBtn {
+    background-color: var(--cyan);
+    color: var(--light-orange);
+    font-size: 20px;
+    margin-bottom: 30px;
+    padding: 10px;
 }

@@ -1,124 +1,157 @@
+const userPoints = document.querySelector('#txtUser');
+const computerPoints = document.querySelector('#txtComputer');
+const otherText = document.querySelector('#txtOne');
+const text = document.querySelector('#txtTwo');
+const wrapper = document.querySelector('.wrapper');
+const btnPaper = document.querySelector('#paper');
+const btnRock = document.querySelector('#rock');
+const btnScissors = document.querySelector('#scissors');
 
+//Final message:
+const newMessage = document.createElement('section');
+newMessage.setAttribute("class", "hide");
+const textMessage = document.createElement('p');
+textMessage.setAttribute("class", "txtMessage");
+textMessage.textContent = "You win!";
+const refreshBtn = document.createElement('button');
+refreshBtn.setAttribute("class", "newBtn");
+refreshBtn.textContent = "Refresh";
+document.body.appendChild(newMessage);
+newMessage.appendChild(textMessage);
+newMessage.appendChild(refreshBtn);
 
-let acu = 0;
-let acuHuman = 0;
+//Get player selection:
+function playerSelection() {
+    let sel = this.id;
+    switch (sel) {
+        case "paper":
+            document.querySelector('.user').src = "./images/paper.png";
+            break;
+        case "rock":
+            document.querySelector('.user').src = "./images/rock.png";
+            break;
+        case "scissors":
+            document.querySelector('.user').src = "./images/scissors.png";
+            break;
+    } 
+    computerSelection();
+    playRound();
+}
+            
+//Get computer selection:
+function computerSelection(){
+    let number = Math.floor(Math.random()*(4 - 1)+1);
+    switch (number) {
+    case 1:
+        document.querySelector('.computer').src = "./images/paper.png";
+        break;
+    case 2:
+        document.querySelector('.computer').src = "./images/rock.png";
+        break;
+    case 3:
+        document.querySelector('.computer').src = "./images/scissors.png";
+        break;
+    }
+}
+
+//Playround:
+let acuUser = 0;
 let acuComputer = 0;
 
-//Obtener la jugada del usuario
-function getPlayerSelection() {
-    let move = prompt("Ingrese piedra, papel o tijeras:");
-    return move;
-}
-let playerMove= getPlayerSelection();
-let playerSelection = playerMove.toLowerCase();
-
-//Obtener la jugada de la computadora
-function getRandomNumber(){
-let number = Math.floor(Math.random()*(4 - 1)+1);
-return number;
-}
-
-let selection = getRandomNumber();
-
-function getComputerChoice(selection){
-    let sel;
-    switch (selection) {
-        case 1:
-            sel = "piedra";
+function playRound() {
+    let messageOne;
+    let messageTwo;
+    let user = document.querySelector('.user').src;
+    let computer = document.querySelector('.computer').src;
+    switch (user) {
+        case "http://127.0.0.1:5500/images/paper.png":
+        switch (computer) {
+            case "http://127.0.0.1:5500/images/paper.png":
+            messageOne = "Whoa!";
+            messageTwo = "Tie!";                            
             break;
-        case 2:
-            sel = "papel";
+            case "http://127.0.0.1:5500/images/rock.png":
+            messageOne = "You win!";
+            messageTwo = "Paper beats Rock!";
+            acuUser++;
+            userPoints.textContent =  `Player: ${acuUser}`;
             break;
-        case 3:
-            sel = "tijeras";
+            case "http://127.0.0.1:5500/images/scissors.png":
+            messageOne = "You lose!";
+            messageTwo = "Scissors beats Paper";
+            acuComputer++;
+            computerPoints.textContent =  `Computer: ${acuComputer}`;
             break;
-    }
-    return sel;
-}
-
-//Resultado de la ronda e impresión del resultado de la ronda
-function playRound(playerSelection, computerSelection) {
-    let result;
-    switch (playerSelection) {
-        case "piedra":
-            switch (computerSelection) {
-                case "tijeras":
-                    result = "¡Ganaste! La piedra vence a las tijeras.";
-                    break;
-                case "papel":
-                    result = "¡Perdiste! El papel vence a la piedra.";
-                    break;
-                case "piedra":
-                    result = "¡Empate!";
-                    break;
             }
+        break;
+        case "http://127.0.0.1:5500/images/rock.png":
+        switch (computer) {
+            case "http://127.0.0.1:5500/images/paper.png":
+            messageOne = "You lose!";
+            messageTwo = "Paper beats Rock";
+            acuComputer++;
+            computerPoints.textContent =  `Computer: ${acuComputer}`;
             break;
-        case "papel":
-            switch (computerSelection) {
-                case "piedra":
-                    result = "¡Ganaste! El papel vence a la piedra.";
-                    break;
-                case "tijeras":
-                    result = "¡Perdiste! Las tijeras vencen al papel.";
-                    break;
-                case "papel":
-                    result = "¡Empate!";
-            }
+            case "http://127.0.0.1:5500/images/rock.png":
+            messageOne = "Whoa!";
+            messageTwo = "Tie!";
             break;
-        case "tijeras":
-            switch (computerSelection) {
-                case "papel":
-                    result = "¡Ganaste! Las tijeras vencen al papel.";
-                    break;
-                case "piedra":
-                    result = "¡Perdiste! La piedra vence a las tijeras.";
-                    break;
-                case "tijeras":
-                    result = "¡Empate!";
-                    break;
-            }
+            case "http://127.0.0.1:5500/images/scissors.png":
+            messageOne = "You win!";
+            messageTwo = "Rock beats Scissors!";
+            acuUser++;
+            userPoints.textContent =  `Player: ${acuUser}`;
             break;
-    }
-    return result;
-}
-let computerSelection = getComputerChoice(selection);
-
-//Resultado del juego e impresión del resultado del juego
-let roundResult = playRound(playerSelection, computerSelection);
-
-alert(`La computadora jugó ${computerSelection}. El resultado de la ronda fue: ${roundResult}`);
-   
-    function playGame(roundResult) {
-        let cont = 0;
-            if(roundResult == "¡Ganaste! La piedra vence a las tijeras." || roundResult == "¡Ganaste! El papel vence a la piedra." || roundResult == "¡Ganaste! Las tijeras vencen al papel."){
-                cont++;
-            }else if(roundResult == "¡Perdiste! El papel vence a la piedra." || roundResult == "¡Perdiste! Las tijeras vencen al papel." || roundResult == "¡Perdiste! La piedra vence a las tijeras."){
-                cont--;
             }
-        return cont;
+        break;
+        case "http://127.0.0.1:5500/images/scissors.png":
+            switch (computer) {
+            case "http://127.0.0.1:5500/images/paper.png":
+            messageOne = "You win!";
+            messageTwo = "Scissors beats Paper!";
+            acuUser++;
+            userPoints.textContent =  `Player: ${acuUser}`;
+            break;
+            case "http://127.0.0.1:5500/images/rock.png":
+            messageOne = "You lose!";
+            messageTwo = "Rock beats Scissors";
+            acuComputer++;
+            computerPoints.textContent =  `Computer: ${acuComputer}`;
+            break;
+            case "http://127.0.0.1:5500/images/scissors.png":
+            messageOne = "Whoa!";
+            messageTwo = "Tie";
+            break;
+            }
+        break;
+        }
+    otherText.textContent = messageOne;
+    text.textContent = messageTwo;
+    declareWinner();
     }
-    gameResult = playGame(roundResult); 
-
-    if(gameResult == 1){
-        acuHuman++;
-    }else if(gameResult == -1){
-        acuComputer++;
+                                                
+//Declare who reaches 5 points:
+function declareWinner(){
+    if(acuUser == 5 || acuComputer ==5){
+        removeWrapper();
+        if(acuUser === 5){
+            newMessage.setAttribute("class", "message");
+        }else{
+            textMessage.textContent = "You lose!";
+            newMessage.setAttribute("class", "message");
+        }
     }
-
-    acu += gameResult;
-
-function printResult(acu) {
-    let print;
-    if(acu > 0){
-        print = "¡Ganaste el juego! ¡Felicidades!";
-    }else if(acu < 0){
-        print = "¡Perdiste el juego! ¡Inténtalo de nuevo!";
-    }else{
-        print = "¡Empate! A veces ocurre..."
-    }
-    return print;
 }
 
-finalResult = printResult(acu);
+function removeWrapper() {
+    wrapper.remove();
+}
 
-alert(`La puntuación final fue:\nJugador: ${acuHuman} Computadora: ${acuComputer}\n${finalResult}`);
+function refreshPage() {
+    location.reload();
+}
+
+btnPaper.addEventListener("click", playerSelection);
+btnRock.addEventListener("click", playerSelection);
+btnScissors.addEventListener("click", playerSelection);
+refreshBtn.addEventListener("click", refreshPage);

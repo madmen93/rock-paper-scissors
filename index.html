@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="script.js" defer></script>
     <link rel="stylesheet" href="style.css">
     <title>Rock Paper Scissors</title>
 </head>
@@ -11,32 +10,33 @@
     <div id="header">
         <h1>Rock Paper Scissors</h1>
     </div>
-    <div id="content">
+    <div class="wrapper" id="content">
         <div id="instrucitions">
-            <p class="text">Choose any one to start playing</p>
-            <p class="text">The one who scores the first 5 points wins!</p>
+            <p class="text" id="txtOne">Choose any one to start playing</p>
+            <p class="text" id="txtTwo">The one who scores the first 5 points wins!</p>
         </div>
         <div id="score">
             <div id="player">
-                <img src="./images/player.png" alt="letter P">
-                <p>Player: 0</p>
+                <img class="user" src="./images/player.png" alt="letter P">
+                <p id="txtUser">Player: 0</p>
             </div>
             <div id="computer">
-                <img src="./images/computer.png" alt="letter C">
-                <p>Computer: 0</p>
+                <img class="computer" src="./images/computer.png" alt="letter C">
+                <p id="txtComputer">Computer: 0</p>
             </div>
         </div>
         <div id="buttons">
             <button id="paper">
-                <img src="./images/paper.png" alt="paper">
+                <img class="paper" src="./images/paper.png" alt="paper">
             </button>
             <button id="rock">
-                <img src="./images/rock.png" alt="rock">
+                <img class="rock" src="./images/rock.png" alt="rock">
             </button>
             <button id="scissors">
-                <img src="./images/scissors.png" alt="scissors">
+                <img class="scissors" src="./images/scissors.png" alt="scissors">
             </button>
         </div>
     </div>
+<script src="script.js" defer></script>
 </body>
 </html>
